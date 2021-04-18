@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+    ryu:
+        image: danathumber/ryu:latest
+        networks:
+            - underlay
+        deploy:
+            mode: replicated
+            replicas: 3
+            restart_policy:
+                condition: on-failure
+            placement:
+                max_replicas_per_node: 1
+networks:
+    underlay:
